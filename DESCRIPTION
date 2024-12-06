@@ -1,13 +1,18 @@
 Package: r4geobs
 Type: Package
-Title: What the Package Does (Title Case)
+Title: R Package pour collecter et utiliser les données geobs
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    person("Benoit", "Richard", , "benoit.richard@ofb.gouv.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4522-027X"))
+License: GPL (>= 3)
+Description: Ensemble de fonctions pour utiliser les données issues de
+    geobs, l'application de l'Office
+    français de la biodiversité (OFB).
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/richaben/r4geobs
 BugReports: https://github.com/richaben/r4geobs/issues
+RoxygenNote: 7.3.2
+Imports: 
+    magrittr
