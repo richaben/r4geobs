@@ -1,1 +1,2 @@
-rnorm(100)
+rnorm(1000)
+plot(100)
