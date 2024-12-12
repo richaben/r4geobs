@@ -32,10 +32,11 @@ usethis::use_r("get_geobs_data")
 library(sf)
 # Fouillebroc area :
 # 1.405907,49.341678,1.524525,49.384161
-bbox <- c(xmin = 1.405907,
-          ymin = 49.341678,
-          xmax = 1.524525,
-          ymax = 49.384161) %>%
+#-1.944580,48.133101,1.966553,50.145226
+bbox <- c(xmin = -1.944580,
+          ymin = 48.133101,
+          xmax = 1.966553,
+          ymax = 50.145226) %>%
   st_bbox(crs = 4326)
 
 shape_area <- bbox %>%
@@ -55,6 +56,9 @@ df_test %>%
   unnest(json_column) %>% View()
 
 library(dplyr)
-get_geobs_data("REFERENTIEL_ROE_MONDE", shape_area) %>%
+df_normandie <- get_geobs_data("REFERENTIEL_ROE_MONDE", shape_area)
+
+
+#%>%
   filter(!is.na(hauteur_chute_icemesuree)) %>%
   select(identifiant_roe, hauteur_chute_icemesuree, date_modification_ouvrage) %>% mapview::mapview()
