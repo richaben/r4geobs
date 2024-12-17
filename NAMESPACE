@@ -3,6 +3,7 @@
 export("%>%")
 export(get_bdoe_data)
 export(get_geobs_data_flux)
+importFrom(archive,archive_extract)
 importFrom(cli,cli_alert_success)
 importFrom(httr,build_url)
 importFrom(httr,parse_url)
