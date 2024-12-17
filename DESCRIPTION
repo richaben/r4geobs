@@ -17,6 +17,8 @@ URL: https://github.com/richaben/r4geobs
 BugReports: https://github.com/richaben/r4geobs/issues
 RoxygenNote: 7.3.2
 Imports: 
+    cli,
     httr,
     magrittr,
+    rvest,
     sf
