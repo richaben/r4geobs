@@ -1,0 +1,48 @@
+---
+title: "Comment télécharger des données avec r4geobs ?"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comment télécharger des données avec r4geobs ?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{sf}
+  %\VignetteDepends{dplyr}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## donnees ROE
+
+```{r, eval = FALSE}
+bbox_normandie <- 
+  c(xmin = -1.944580,
+    ymin = 48.133101,
+    xmax = 1.966553,
+    ymax = 50.145226) %>%
+  sf::st_bbox(crs = 4326)
+
+normandie_area <- 
+  bbox_normandie %>%
+  sf::st_as_sfc() %>%
+  sf::st_sf()
+
+# mapview::mapview(normandie_area)
+
+roe_normandie <- 
+  r4geobs::get_geobs_data_flux("REFERENTIEL_ROE_MONDE", normandie_area)
+```
+
+
+## donnees BDOE
+
+```{r, eval = FALSE}
+r4geobs::get_bdoe_data(login = "john.doe@ofb.gouv.fr",
+                       mdp = 'geobs_mon_amour',
+                       nom_dossier = "data_bdoe")
+```
+

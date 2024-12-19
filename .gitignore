@@ -7,3 +7,6 @@
 .DS_Store
 .quarto
 dev_history_file.R
+inst/doc
+/doc/
+/Meta/

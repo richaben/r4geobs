@@ -23,3 +23,7 @@ Imports:
     magrittr,
     rvest,
     sf
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

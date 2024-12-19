@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^dev_history_file\.R$
+^doc$
+^Meta$
