@@ -4,17 +4,20 @@
 \alias{get_bdoe_data}
 \title{Fonction pour télécharger les données du module BDOE de GéObs.}
 \usage{
-get_bdoe_data(login, mdp, nom_dossier = NULL)
+get_bdoe_data(login, mdp, nom_dossier = NULL, lecture = FALSE)
 }
 \arguments{
-\item{login}{l'adresse mail d'accès à l'application GéObs.}
+\item{login}{texte. l'adresse mail d'accès à l'application GéObs.}
 
-\item{mdp}{le mot de passe associé.}
+\item{mdp}{texte. le mot de passe associé.}
 
-\item{nom_dossier}{le nom du dossier où seront téléchargées les données.}
+\item{nom_dossier}{texte. le nom du dossier où seront téléchargées les données.}
+
+\item{lecture}{booléen. si TRUE, lit le fichier zip téléchargé.}
 }
 \value{
-un fichier zip nommé \code{export_csv_total_bd.zip} contenant les données.
+un fichier zip nommé \code{export_csv_total_bd.zip} contenant les données est téléchargé.
+ Si le fichier zip est lu, retourne un objet sous forme de liste de dataframe.
 }
 \description{
 Fonction pour télécharger les données du module BDOE de GéObs.
@@ -24,5 +27,11 @@ Fonction pour télécharger les données du module BDOE de GéObs.
 get_bdoe_data(login = "john.doe@ofb.gouv.fr",
               mdp = 'geobs_mon_amour',
               nom_dossier = "data_bdoe")
+
+bdoe_data <-
+  get_bdoe_data(login = "john.doe@ofb.gouv.fr",
+                mdp = 'geobs_mon_amour',
+                nom_dossier = "data_bdoe",
+                lecture = TRUE)
 }
 }

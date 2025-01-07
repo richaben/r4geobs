@@ -2,18 +2,17 @@
 ### Fonctions utiles
 ####-----------------------------####
 
-#' Lire le contenu d'une archive
+#' Fonction pour lire le contenu de l'archive zip contenant les données BDOE
 #'
 #' @noRd
-#' @description Copier/coller de la fonction de Cédric M.
+#' @description Adaptation de la fonction de Cédric M.
 #'
 #' @param zipfile texte. Chemin de l'archive
-#' @param file_pattern texte. Tout ou partie du chemin du fichier à extraire
-#' @param fun nom de la fonction à utiliser pour lire le fichier
-#' @param ...  paramètres supplémentaires à passer à la fonction `fun`
+#' @param ...
 #'
-#' @importFrom archive archive_extract
-read_from_zip <- function(zipfile, file_pattern, fun, ...) {
+#'
+#'
+read_zip_bdoe <- function(zipfile, ...){
 
   temp <- tempfile()
 
@@ -23,14 +22,24 @@ read_from_zip <- function(zipfile, file_pattern, fun, ...) {
     path = temp,
     full.names = TRUE,
     recursive = TRUE
-  ) %>%
+  )
+
+  filename <-
+    filepath %>%
     (function(x) {
-      x[grepl(x = x, pattern = file_pattern)]
+      x %>%
+        basename() %>%
+        gsub(pattern = ".csv",
+             replacement = "")
     })
 
-  obj <- fun(filepath, ...)
+  purrr::map(
+    .x = filepath,
+    .f = function(x) {vroom::vroom(x,
+                                   show_col_types=FALSE,
+                                   progress = FALSE
+    )}
+  ) %>%
+    purrr::set_names(filename)
 
-  unlink(temp, recursive = TRUE)
-
-  return(obj)
 }
