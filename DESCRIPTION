@@ -24,7 +24,8 @@ Imports:
     purrr,
     rvest,
     sf,
-    vroom
+    vroom,
+    xml2
 Suggests: 
     knitr,
     rmarkdown
