@@ -16,7 +16,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-## donnees ROE
+## Données ROE via le flux WFS
+
+### Pour savoir quelles couches et attributs sont disponibles
+
+- Pour les couches :
+
+```{r}
+## Noms des couches
+r4geobs::get_geobs_wfs_couches()
+```
+
+- Pour les attributs d'une couche (par exemple `REFERENTIEL_ROE_MONDE` ici) :
+
+```{r}
+r4geobs::get_geobs_wfs_attributs("REFERENTIEL_ROE_MONDE")
+```
+
+### Exemple de récupération de données sur la Normandie
 
 ```{r, eval = FALSE}
 bbox_normandie <- 
@@ -34,15 +51,30 @@ normandie_area <-
 # mapview::mapview(normandie_area)
 
 roe_normandie <- 
-  r4geobs::get_geobs_data_flux("REFERENTIEL_ROE_MONDE", normandie_area)
+  r4geobs::get_geobs_data_wfs("REFERENTIEL_ROE_MONDE", normandie_area)
 ```
 
+## Données BDOE
 
-## donnees BDOE
+- Téléchargement des données BDOE (*Base de Données des Obstacles à l'Ecoulement*) :
+
+La *Base de Données des Obstacles à l'Ecoulement* (**BDOE**) est un module complémentaire du *Référentiel des Obstacles à l'Ecoulement* (**ROE**).
+
+La fonction `get_bdoe_data` permet de télécharger les données BDOE à partir de [geobs](https://geobs.eaufrance.fr). Il faut disposer d'un compte (login et mot de passe) pour l'accès. Les données téléchargées sont sous forme de fichiers zip. 
 
 ```{r, eval = FALSE}
 r4geobs::get_bdoe_data(login = "john.doe@ofb.gouv.fr",
                        mdp = 'geobs_mon_amour',
-                       nom_dossier = "data_bdoe")
+                       nom_dossier = "data_bdoe",
+                       lecture = FALSE)
 ```
 
+Il est possible de lire les données depuis le fichier zip avec l'argument `lecture = TRUE`.
+
+```{r, eval = FALSE}
+data_bdoe <-
+r4geobs::get_bdoe_data(login = "john.doe@ofb.gouv.fr",
+                       mdp = 'geobs_mon_amour',
+                       nom_dossier = "data_bdoe",
+                       lecture = TRUE)
+```
