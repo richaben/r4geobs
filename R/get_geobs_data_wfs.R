@@ -1,4 +1,4 @@
-#' Récupérer les données de la base GEOBS à partir du flux BRGM
+#' Récupérer les données de la base GEOBS à partir du flux WFS (BRGM)
 #'
 #' @param couche nom de la couche à charger
 #' @param geo objet spatial de type 'sf'
@@ -11,10 +11,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_geobs_data_flux("ROE_MONDE", shape_area)
+#' get_geobs_data_wfs("ROE_MONDE", shape_area)
 #' }
 
-get_geobs_data_flux <- function(couche, geo){
+get_geobs_data_wfs <- function(couche, geo){
 
   geo_bbox <- sf::st_bbox(geo)
 
@@ -35,11 +35,3 @@ get_geobs_data_flux <- function(couche, geo){
     sf::read_sf(crs = 4326)
 
 }
-
-# get_geobs_data_flux("ROE_MONDE", shape_area) %>% View()
-# get_geobs_data_flux("REFERENTIEL_ROE_MONDE", shape_area) %>% View()
-# get_geobs_data_flux("OBSTACLE_BDOE", shape_area) %>% View()
-# get_geobs_data_flux("OBSTACLE_BDOE_FILTERED", shape_area) %>% View()
-# get_geobs_data_flux("OBSTACLE_ICE", shape_area) %>% glimpse()
-
-
