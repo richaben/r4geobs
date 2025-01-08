@@ -11,10 +11,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_geobs_data_wfs("ROE_MONDE", shape_area)
+#' get_geobs_wfs_data("ROE_MONDE", shape_area)
 #' }
 
-get_geobs_data_wfs <- function(couche, geo){
+get_geobs_wfs_data <- function(couche, geo){
 
   geo_bbox <- sf::st_bbox(geo)
 

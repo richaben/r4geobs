@@ -2,9 +2,10 @@
 
 export("%>%")
 export(get_bdoe_data)
-export(get_geobs_data_wfs)
+export(get_classCE_wfs)
 export(get_geobs_wfs_attributs)
 export(get_geobs_wfs_couches)
+export(get_geobs_wfs_data)
 importFrom(cli,cli_alert_success)
 importFrom(cli,col_blue)
 importFrom(httr,GET)
