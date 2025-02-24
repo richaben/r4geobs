@@ -33,13 +33,22 @@ read_zip_bdoe <- function(zipfile, ...){
              replacement = "")
     })
 
-  purrr::map(
+  bdoe_csv <-
+    purrr::map(
     .x = filepath,
-    .f = function(x) {vroom::vroom(x,
-                                   show_col_types=FALSE,
-                                   progress = FALSE
-    )}
+    .f = function(x) {
+      #read.csv2(x)
+      vroom::vroom(x,
+                   guess_max = 2500,
+                   show_col_types = FALSE,
+                   progress = FALSE
+      )
+      }
   ) %>%
     purrr::set_names(filename)
+
+  unlink(temp)
+
+  return(bdoe_csv)
 
 }
