@@ -19,9 +19,11 @@ RoxygenNote: 7.3.2
 Imports: 
     archive,
     cli,
+    dplyr,
     httr,
     magrittr,
     purrr,
+    rlang,
     rvest,
     sf,
     vroom,
