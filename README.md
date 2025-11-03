@@ -8,7 +8,7 @@
 [![LifeCycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-This repository pulls data from the geobs database.
+R package to use data from the Referential of flow obstacles (ROE).
 
 ## Installation
 

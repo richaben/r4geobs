@@ -15,11 +15,12 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/richaben/r4geobs
 BugReports: https://github.com/richaben/r4geobs/issues
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: 
     archive,
     cli,
     dplyr,
+    glue,
     httr,
     magrittr,
     purrr,

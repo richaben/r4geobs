@@ -16,6 +16,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Installer le package
+
+```{r, eval=FALSE}
+devtools::install_github("richaben/r4geobs", 
+                         build_vignettes = TRUE)
+```
+
+
 ## Données ROE via le flux WFS
 
 ### Pour savoir quelles couches et attributs sont disponibles
@@ -54,7 +62,7 @@ roe_normandie <-
   r4geobs::get_geobs_wfs_data("REFERENTIEL_ROE_MONDE", normandie_area)
 ```
 
-## Données BDOE
+## Données BDOE via GéObs
 
 - Téléchargement des données BDOE (*Base de Données des Obstacles à l'Ecoulement*) :
 
@@ -73,8 +81,33 @@ Il est possible de lire les données depuis le fichier zip avec l'argument `lect
 
 ```{r, eval = FALSE}
 data_bdoe <-
-r4geobs::get_bdoe_data(login = "john.doe@ofb.gouv.fr",
-                       mdp = 'geobs_mon_amour',
-                       nom_dossier = "data_bdoe",
-                       lecture = TRUE)
+  r4geobs::get_bdoe_data(login = "john.doe@ofb.gouv.fr",
+                         mdp = 'geobs_mon_amour',
+                         nom_dossier = "data_bdoe",
+                         lecture = TRUE)
 ```
+
+## Checker la présence de photos pour un ouvrage ROE
+
+```{r, eval = FALSE}
+# initier la session de connexion geobs avec le `init_geobs_session()`
+ma_session <- 
+  init_geobs_session(login = "john.doe@ofb.gouv.fr", 
+                     mdp = "geobs_mon_amour")
+
+presence_photos <-
+  r4geobs::check_photos_roe_data(id_ouvrage = 39268, 
+                                 session = ma_session)
+```
+
+```{r, include=FALSE, eval = FALSE}
+ma_session <- 
+  init_geobs_session(login = Sys.getenv("GEOBS_LOGIN"), 
+                     mdp = Sys.getenv("GEOBS_MDP"))
+presence_photos <-
+  check_photos_roe_data(id_ouvrage = 39268, 
+                        session = ma_session)
+
+knitr::kable(presence_photos)
+```
+
