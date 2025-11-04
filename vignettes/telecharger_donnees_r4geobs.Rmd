@@ -89,25 +89,16 @@ data_bdoe <-
 
 ## Checker la présence de photos pour un ouvrage ROE
 
+- Exemple sur l'ouvrage `ROE39268`.
+
 ```{r, eval = FALSE}
 # initier la session de connexion geobs avec le `init_geobs_session()`
 ma_session <- 
-  init_geobs_session(login = "john.doe@ofb.gouv.fr", 
-                     mdp = "geobs_mon_amour")
+  r4geobs::init_geobs_session(login = "john.doe@ofb.gouv.fr", 
+                              mdp = "geobs_mon_amour")
 
 presence_photos <-
   r4geobs::check_photos_roe_data(id_ouvrage = 39268, 
                                  session = ma_session)
-```
-
-```{r, include=FALSE, eval = FALSE}
-ma_session <- 
-  init_geobs_session(login = Sys.getenv("GEOBS_LOGIN"), 
-                     mdp = Sys.getenv("GEOBS_MDP"))
-presence_photos <-
-  check_photos_roe_data(id_ouvrage = 39268, 
-                        session = ma_session)
-
-knitr::kable(presence_photos)
 ```
 
