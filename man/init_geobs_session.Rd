@@ -11,8 +11,11 @@ init_geobs_session(login, mdp)
 
 \item{mdp}{texte. Mot de passe compte Geobs}
 }
+\value{
+une session
+}
 \description{
-Initie une connexion à l'application Géobs.
+Initie une connexion à l'application Geobs.
 }
 \examples{
 \dontrun{

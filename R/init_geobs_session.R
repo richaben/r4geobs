@@ -1,9 +1,12 @@
 #' Fonction pour initier une session de connexion à Geobs
 #'
-#' @description Initie une connexion à l'application Géobs.
+#' @description Initie une connexion à l'application Geobs.
 #'
 #' @param login texte. Login (email) compte Geobs
 #' @param mdp texte. Mot de passe compte Geobs
+#'
+#' @returns une session
+#' @export
 #'
 #' @importFrom rvest session html_form html_form_set session_submit
 #'
