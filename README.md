@@ -8,7 +8,7 @@
 [![LifeCycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-R package to use data from the Referential of flow obstacles (ROE).
+**r4geobs** is a `R` package to facilitate the use of data from the Referential of flow obstacles (ROE) and GéObs application (containing ROE and DBOE datasets).
 
 ## Installation
 
